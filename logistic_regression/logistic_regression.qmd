@@ -68,6 +68,12 @@ e^{-z} &= \frac 1p - 1\\
 \end{split}
 $$
 
+This is the logistic function:
+
+$$
+\sigma(z) = \frac{1}{1+e^{-z}}
+$$
+
 This means that the logistic function backs out the probability of an event happening, from the log odds of the event happening.
 
 ```{python}
@@ -221,4 +227,12 @@ It can be particularly useful when precision and recall both matter, i.e. when f
 
 ### ROC Curve and AUC
 
-The ROC (Receiver Operating Characteristic) curve plots the true positive rate (recall) against the false positive rate at different classification thresholds. The AUC (Area Under the Curve) quantifies the overall ability of the model to distinguish between classes.
+The ROC (Receiver Operating Characteristic) curve plots the true positive rate (recall) against the false positive rate at different classification thresholds. The AUC (Area Under the Curve) quantifies the overall ability of the model to distinguish between classes. The true positive rate is all the proportion of true positives over all actual positives. The false positive rate is the proportion of false positives over all actual negatives.
+
+$$
+\text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}}
+$$
+
+$$
+\text{FPR} = \frac{\text{FP}}{\text{TN} + \text{FP}}
+$$

@@ -1,0 +1,158 @@
+---
+title: Time Series
+author: Oliver Gregory
+format:
+    html:
+        page-layout: full
+        highlight-style: github
+        format-links: false
+    pdf:
+        documentclass: article
+        papersize: a4
+        geometry: margin=2cm
+        highlight-style: github
+        code-block-border-left: true
+self-contained: true
+---
+
+## Time series decomposition
+
+Time series decomposition involves breaking down a time series in three main components: trend, seasonality and residual. The trend ($T_t$) is the long term progression of the series. The seasonality ($S_t$) is the recurring patterns within the data. The residual ($R_t$) is the random, unexplained variation in the data.
+
+$$
+y_t = T_t + S_t + R_t
+$$
+
+For example, in daily electricity usage data, the trend might reflect rising consumption over the years, the seasonality might be higher usage during winter, and the residuals would be the random, unexplained changes.
+
+```{python}
+#| echo: false
+
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Set random seed for reproducibility
+np.random.seed(42)
+
+# Generate time points
+n_points = 1000  # One year of daily data
+time = np.arange(n_points)
+
+# Step 1: Generate trend component (linearly increasing data)
+trend = 0.02 * time + 10  # Slope of 0.02, starting at 10
+
+# Step 2: Generate seasonal component (sine wave + noise)
+seasonal_period = 250  # Quarterly seasonality
+seasonal = 3 * np.sin(2 * np.pi * time / seasonal_period) + 0.5 * np.random.normal(0, 0.5, n_points)
+
+# Step 3: Generate random noise (residual)
+residual = np.random.normal(0, 1, n_points)
+
+# Combine all components
+observed = trend + seasonal + residual
+
+# Step 4: Create figure with 4 stacked subplots
+fig, axes = plt.subplots(4, 1, figsize=(12, 10))
+fig.suptitle('Time Series Decomposition', fontsize=16, fontweight='bold')
+
+# Plot 1: Observed (combined) time series
+axes[0].plot(time, observed, color='midnightblue')
+axes[0].set_title('Observed Time Series')
+axes[0].set_ylabel('Value')
+axes[0].grid(True, alpha=0.3)
+
+# Plot 2: Trend component
+axes[1].plot(time, trend, color='mediumblue')
+axes[1].set_title('Trend Component')
+axes[1].set_ylabel('Trend')
+axes[1].grid(True, alpha=0.3)
+
+# Plot 3: Seasonal component
+axes[2].plot(time, seasonal, color='royalblue')
+axes[2].set_title('Seasonal Component')
+axes[2].set_ylabel('Seasonal')
+axes[2].grid(True, alpha=0.3)
+
+# Plot 4: Residual component
+axes[3].plot(time, residual, color='skyblue')
+axes[3].set_title('Residual Component')
+axes[3].set_ylabel('Residual')
+axes[3].set_xlabel('Time')
+axes[3].grid(True, alpha=0.3)
+
+# Adjust layout to prevent overlap
+plt.tight_layout()
+
+# Show the plot
+plt.show()
+```
+
+## Stationarity
+
+A time series is stationary when its behaviour remains constant over time which means that its statistical properties, like the mean and variance, don't change over time. Stationarity is crucial because many time series models, like ARMA, assume a stationary input. Non stationary data can be things like cumulative revenue over time which will have a clear upward trend. Techniques like differencing are able to transform trending data to stationary data.
+
+### Differencing
+
+Differencing removes trends to make a time series stationary by calculating the difference between consecutive observations.
+
+$$
+\Delta y_t = y_t - t_{t-1}
+$$
+
+For higher order differencing, the process is repeated, for example:
+
+$$
+\Delta ^2 y_t = \Delta y_t - \Delta Y_{t-1} = y_t - 2y_{t-1} + y_{t-2}
+$$
+
+We can also perform seasonal differencing to remove repeating patterns, such as weekly or yearly seasonality, by substracting the value from the same period in the previous cycle.
+
+$$
+\Delta y_t = y_t - y_{t-p} \text{ where $p$ is the period of the seasonal behaviour.}
+$$
+
+## Autoregression and Moving Averages
+
+### Autoregressive (AR) models
+
+An AR model predicts the current value using past values. For example, an AR(2) model forecasts using the previous two lags. 
+
+$$
+y_t = \phi_1 y_{t-1} + \phi_2 y_{t-2} + \epsilon_t
+$$
+
+### Moving Average (MA) models
+
+An MA model predicts the current value using previous forecast errors.
+
+$$
+y_t = \mu + \theta_1 \epsilon_{t-1} + \theta_2 \epsilon_{t-2} + \epsilon_t
+$$
+
+### Autoregressive Moving Average (ARMA) models
+
+ARMA models combine AR and MA components to model stationary data. An ARMA(1,1) model contains one lag and one past error.
+
+$$
+y_t = \phi_1 y_{t-1} + \theta_{t-1} \epsilon_{t-1} + \epsilon_t
+$$
+
+This allows the model to capture both lagged relationships and the impact of past errors. This could be useful in demand forecasting for example where the demand on a given day may depending on the previous day's demand and unexpected supply chain issues.
+
+### AIC and BIC for optimising model complexity
+
+Akaike Information Criterion (AIC) and Bayesian Information Criterion (BIC) are used to compare models by balancing goodness of fit with model complexity. They are defined as, 
+
+$$
+\text{AIC} = 2k - 2 \ln(L)
+$$
+
+$$
+\text{BIC} = k\ln(n) - 2 \ln(L)
+$$
+
+where $k$ is the number of parameters in the model, $n$ is the number of observations in the model and $L$ is the likelihood of the model (i.e. the probability of observing the data, assuming the model is true).
+
+! How to calculate likelihood !
+
+ADF and KPSS too!
