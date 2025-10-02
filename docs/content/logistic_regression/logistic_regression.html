@@ -4190,6 +4190,7 @@ window.Quarto = {
   <li><a href="#precision" id="toc-precision" class="nav-link" data-scroll-target="#precision">Precision</a></li>
   <li><a href="#f1-score" id="toc-f1-score" class="nav-link" data-scroll-target="#f1-score">F1-Score</a></li>
   <li><a href="#roc-curve-and-auc" id="toc-roc-curve-and-auc" class="nav-link" data-scroll-target="#roc-curve-and-auc">ROC Curve and AUC</a></li>
+  <li><a href="#discuss-class-imbalance" id="toc-discuss-class-imbalance" class="nav-link" data-scroll-target="#discuss-class-imbalance">Discuss class imbalance</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -4270,7 +4271,7 @@ e^{-z} &amp;= \frac 1p - 1\\
 \sigma(z) = \frac{1}{1+e^{-z}}
 \]</span></p>
 <p>This means that the logistic function backs out the probability of an event happening, from the log odds of the event happening.</p>
-<div id="441f2960" class="cell" data-fig-height="5" data-fig-width="12" data-execution_count="1">
+<div id="94467a72" class="cell" data-fig-height="5" data-fig-width="12" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
@@ -4314,7 +4315,7 @@ L(\beta) = \prod_{i=1}^m \sigma(z_i)^{y_i} \cdot (1 - \sigma(z_i))^{(1-y_i)}
 <section id="in-code" class="level2">
 <h2 class="anchored" data-anchor-id="in-code">In code</h2>
 <p>We can use the <code>sklearn.linear_model</code> package to build logistic regression models using python.</p>
-<div id="211d3301" class="cell" data-execution_count="2">
+<div id="1264f820" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.linear_model <span class="im">import</span> LogisticRegression</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.model_selection <span class="im">import</span> train_test_split</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -4379,6 +4380,9 @@ L(\beta) = \prod_{i=1}^m \sigma(z_i)^{y_i} \cdot (1 - \sigma(z_i))^{(1-y_i)}
 <p><span class="math display">\[
 \text{FPR} = \frac{\text{FP}}{\text{TN} + \text{FP}}
 \]</span></p>
+</section>
+<section id="discuss-class-imbalance" class="level3">
+<h3 class="anchored" data-anchor-id="discuss-class-imbalance">Discuss class imbalance</h3>
 
 
 </section>
