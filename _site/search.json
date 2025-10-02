@@ -1,0 +1,165 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Data Science Handbook",
+    "section": "",
+    "text": "This is a Quarto website.\nTo learn more about Quarto websites visit https://quarto.org/docs/websites."
+  },
+  {
+    "objectID": "content/decision_trees/decision_trees.html",
+    "href": "content/decision_trees/decision_trees.html",
+    "title": "Decision Trees for Classification",
+    "section": "",
+    "text": "Imagine you want to determine whether or not you are in Scotland, based on thing happening in your environment. Perhaps you start by asking if it is raining? If the answer is yes, it is probably very likely that you are in Scotland, but just to be sure that you aren’t in India during the monsoon season, you also check if it is cold. If the answer is also yes, then you determine you are in Scotland. Perhaps instead, it is not raining, but you can definitely hear bagpipes in the distance, then that’s also a tell tale sign you are in Scotland.\n\n\n\n\n\nflowchart TD\n    A[Is it raining?] --&gt;|Yes| B[Is it cold?]\n    A --&gt;|No| C[Can you&lt;br&gt;hear bagpipes?]\n    C --&gt;|Yes| D[&lt;b&gt;Scotland&lt;/b&gt;]\n    C --&gt;|No| E[Is anyone&lt;br&gt;wearing a kilt?]\n    B --&gt;|Yes| F[&lt;b&gt;Scotland&lt;/b&gt;]\n    B --&gt;|No| G[&lt;b&gt;Not Scotland&lt;/b&gt;]\n    E --&gt;|Yes| H[&lt;b&gt;Scotland&lt;/b&gt;]\n    E --&gt;|No| I[&lt;b&gt;Not Scotland&lt;/b&gt;]\n\n\n\n\n\n\n\nDecision trees work in essentially the same way. You start with some data, let’s say the loan application data set from Kaggle.\n\n\n\n\n    \n    \n    \n        \n        \n        \n        \n        \n        \n        \n        \n    \n    \n   \n    \n      \n  \n        \n    \n    \n  \n        \n    \n    \n  \n        \n    \n      \n  \n        \n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n\n            \n                \n                \n            \n        \n    \n\n\n    Loading ITables v2.5.2 from the internet...\n    (need help?)\n    \n\n\n\n\nThis dataset include various information about a given loan application from things like ApplicantIncome to Property_Area type. We can use this information to train a model that will predict whether or not a given loan is approved. The aim is to end up with a model that works in the same way as our example decision tree: we ask it some questions, traverse the tree, and end up at a final decision for each application.",
+    "crumbs": [
+      "Home",
+      "Decision Trees",
+      "Decision Trees"
+    ]
+  },
+  {
+    "objectID": "content/decision_trees/decision_trees.html#decision-trees-for-regression",
+    "href": "content/decision_trees/decision_trees.html#decision-trees-for-regression",
+    "title": "Decision Trees for Classification",
+    "section": "Decision Trees for Regression",
+    "text": "Decision Trees for Regression\n\nHow does the decision tree regression algorithm work?",
+    "crumbs": [
+      "Home",
+      "Decision Trees",
+      "Decision Trees"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html",
+    "href": "content/logistic_regression/logistic_regression.html",
+    "title": "Logistic Regression",
+    "section": "",
+    "text": "Odds and probabilities are related but not the same. The odds of an event, \\(Y\\), are the ratio of the event happening to the event not happening. For example, if the odds of Edinburgh Rugby between the Glasgow Warriors are 5 to 3, then that means if it were to be played 8 times, Edinburgh would win 5 of those times and the odds would be \\(5/3 \\approx 1.7\\). Probability on the other hand, is the ratio of the event happening to everything, i.e., the number of games Edinburgh Rugby win, to the number of total games they play, which is \\(5/8 = 0.625\\).\nProbabilities are always between 0 and 1, while odds are always within the range of 0 and infinity.\n\n\nThe odds of an event happening can be calculated from the ratio of the probabilites of each event.\n\\[\n\\text{Odds} = \\frac{P(Y = 1)}{P(Y = 0)}\n\\]\nBack to the Edinburgh Rugby example, where \\(Y = 1\\) is the event where Edinburgh Rugby beats the Glasgow Warriors,\n\\[\n\\begin{split}\nP(Y = 1) &= \\frac 5 8 = 0.625 \\\\\nP(Y = 0) &= 1 - P(Y = 1) = \\frac 3 8 = 0.375 \\\\\n\\text{Odds of Edinburgh Winning} &= \\frac{P(Y = 1)}{P(Y = 0)} = \\frac 5 8 / \\frac 3 8 = \\frac 5 3 \\approx 1.7\n\\end{split}\n\\]\n\n\n\nWhen the odds are against an event happening, i.e., it is less likely to happen than not happen, the odds will be between 0 and 1. Conversely, when the odds are in favour of an event happening, the odds will be between 1 and infinity. If the odds of an event are against 1 to 6, then the odds are approximately 1.7. But if the odds are in favour 6 to 1, then the odds are 6. The magnitude of the odds against look much smaller than the odds in favour, but taking the log of these odds makes it all symmetrical.\n\\[\n\\log(1/6) = - \\log(6) = -1.79\n\\]\nThe log function makes the absolute distance from 0 to the odds the same whether it is against or in favour. Log Odds are normally distributed.",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html#odds-and-log-odds",
+    "href": "content/logistic_regression/logistic_regression.html#odds-and-log-odds",
+    "title": "Logistic Regression",
+    "section": "",
+    "text": "Odds and probabilities are related but not the same. The odds of an event, \\(Y\\), are the ratio of the event happening to the event not happening. For example, if the odds of Edinburgh Rugby between the Glasgow Warriors are 5 to 3, then that means if it were to be played 8 times, Edinburgh would win 5 of those times and the odds would be \\(5/3 \\approx 1.7\\). Probability on the other hand, is the ratio of the event happening to everything, i.e., the number of games Edinburgh Rugby win, to the number of total games they play, which is \\(5/8 = 0.625\\).\nProbabilities are always between 0 and 1, while odds are always within the range of 0 and infinity.\n\n\nThe odds of an event happening can be calculated from the ratio of the probabilites of each event.\n\\[\n\\text{Odds} = \\frac{P(Y = 1)}{P(Y = 0)}\n\\]\nBack to the Edinburgh Rugby example, where \\(Y = 1\\) is the event where Edinburgh Rugby beats the Glasgow Warriors,\n\\[\n\\begin{split}\nP(Y = 1) &= \\frac 5 8 = 0.625 \\\\\nP(Y = 0) &= 1 - P(Y = 1) = \\frac 3 8 = 0.375 \\\\\n\\text{Odds of Edinburgh Winning} &= \\frac{P(Y = 1)}{P(Y = 0)} = \\frac 5 8 / \\frac 3 8 = \\frac 5 3 \\approx 1.7\n\\end{split}\n\\]\n\n\n\nWhen the odds are against an event happening, i.e., it is less likely to happen than not happen, the odds will be between 0 and 1. Conversely, when the odds are in favour of an event happening, the odds will be between 1 and infinity. If the odds of an event are against 1 to 6, then the odds are approximately 1.7. But if the odds are in favour 6 to 1, then the odds are 6. The magnitude of the odds against look much smaller than the odds in favour, but taking the log of these odds makes it all symmetrical.\n\\[\n\\log(1/6) = - \\log(6) = -1.79\n\\]\nThe log function makes the absolute distance from 0 to the odds the same whether it is against or in favour. Log Odds are normally distributed.",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html#logistic-function-or-sigmoid-function",
+    "href": "content/logistic_regression/logistic_regression.html#logistic-function-or-sigmoid-function",
+    "title": "Logistic Regression",
+    "section": "Logistic Function (or Sigmoid Function)",
+    "text": "Logistic Function (or Sigmoid Function)\nThe logit function is defined as the log of the ratio of probabilities, i.e., the log odds.\n\\[\nz = \\log\\left(\\frac{p}{1 - p}\\right), \\text{ where } p = P(Y=1)\n\\]\nThe logistic function, or the sigmoid function, is the inverse of the logit function.\n\\[\n\\begin{split}\ne^z &= \\frac{p}{1-p}\\\\\ne^{-z} &= \\frac 1p - 1\\\\\n1+ e^{-z} &= \\frac{1}{p}\\\\\n\\sigma(z) = p &= \\frac{1}{1+e^{-z}} \\text{ where } z \\text{ is the log odds}\n\\end{split}\n\\]\nThis is the logistic function:\n\\[\n\\sigma(z) = \\frac{1}{1+e^{-z}}\n\\]\nThis means that the logistic function backs out the probability of an event happening, from the log odds of the event happening.",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html#maximum-likelihood-estimation",
+    "href": "content/logistic_regression/logistic_regression.html#maximum-likelihood-estimation",
+    "title": "Logistic Regression",
+    "section": "Maximum Likelihood Estimation",
+    "text": "Maximum Likelihood Estimation\nLogistic regression uses Maximum Likelihood Estimation to estimate the parameters that best fit the training data.\nFor a single observation, the likelihood of observing that observation depends on its class label:\n\nIf \\(y = 1\\): The probability is \\(P(y = 1|x) = \\sigma(z)\\).\nIf \\(y = 0\\): The probability is \\(P(y = 0|x) = 1 - \\sigma(z)\\).\n\nThis can be combined into a single expression:\n\\[\nP(y|x) = \\sigma(z)^y \\cdot (1-\\sigma(z))^{(1-y)}\n\\]\nFor a dataset with \\(m\\) observations, the likelihood function, which gives the probability of observing a particular dataset, is the product of the individual observation probabilities for all the observations.\n\\[\nL(\\beta) = \\prod_{i=1}^m \\sigma(z_i)^{y_i} \\cdot (1 - \\sigma(z_i))^{(1-y_i)}\n\\]\nwhere \\(z_i = \\beta_0 + \\beta_1 x_{i1} + \\beta_2 x_{i2} + ... + \\beta_n x_{in}\\) is the linear combination for the \\(i^{\\text{th}}\\) observation and \\(y_i\\) is the actual observation.\nTo simplify the maximisation computation, we can take the log of this, making it the log-likelihood function.\n\\[\n\\log L(\\beta) = \\sum_{i=1}^m [y_i \\log(\\sigma(z_i)) + (1-y_i)\\log(1 - \\sigma(z_i))]\n\\]\nThe objective of MLE is to maximise the log-likelihood. This is the same as minimising the negative log-likelihood, which is also called the cross-entropy loss. Intuitively, when \\(y_i = 1\\), the loss simplifies to \\(-\\log\\sigma(z_i)\\), heavily penalising the model if it assigns a low probability to the positive class. When \\(y_i = 0\\), the loss simplifies to \\(-\\log(1-\\sigma(z_i))\\), heavily penalising the model if it assigns a high probability to the positive class.\n\\[\n\\mathcal{L}(\\beta) = -\\frac 1 m \\sum_{i=1}^m [y_i \\log(\\sigma(z_i)) + (1-y_i)\\log(1 - \\sigma(z_i))]\n\\]\nIn general, there is no analytical solution to this minimisation, so numerical methods, like gradient descent, must be used to find the optimal parmeters of the model.\n\nInterpreting Coefficients\nWithout scaling, a one unit increase in a variable \\(x_i\\) leads to a \\(\\beta_i\\) units increase in \\(z\\), also known as the log odds. For example, a coefficient of 0.5 corresponds to an increase in the log odds of 0.5. However, this is not easily interpretable. Instead, if we take the exponential, then we see that a coefficient of 0.5 corresponds to an increase in the odds of an event happening by \\(\\exp(0.5) \\approx 1.65\\) meaning a one unit increase in the feature, leads to an increase in the odds of the positive class by 65%.",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html#in-code",
+    "href": "content/logistic_regression/logistic_regression.html#in-code",
+    "title": "Logistic Regression",
+    "section": "In code",
+    "text": "In code\nWe can use the sklearn.linear_model package to build logistic regression models using python.\n\nfrom sklearn.linear_model import LogisticRegression\nfrom sklearn.model_selection import train_test_split\n\nX_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)\n\nmodel = LogisticRegression()\nmodel.fit(X_train, y_train)\n\ny_proba = model.predict_proba(X_test)\ny_pred = (y_proba[:, 1] &gt;= 0.5).astype(int)",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html#assumptions-of-logistic-regression",
+    "href": "content/logistic_regression/logistic_regression.html#assumptions-of-logistic-regression",
+    "title": "Logistic Regression",
+    "section": "Assumptions of logistic regression",
+    "text": "Assumptions of logistic regression\n\nLinearity: The relationship between the features and the log odds is linear.\nIndependent errors: The errors, or residuals, are independent.\nNo multicollinearity: The independent variables are not highly correlated with each other.\nSufficient sample size: Logistic regression requires a sufficiently sized and balanced dataset. A rule of thumb is 10-20 observations per feature.",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/logistic_regression/logistic_regression.html#metrics-for-logistic-regression",
+    "href": "content/logistic_regression/logistic_regression.html#metrics-for-logistic-regression",
+    "title": "Logistic Regression",
+    "section": "Metrics for logistic regression",
+    "text": "Metrics for logistic regression\n\nAccuracy\nAccuracy measures the proportion of correctly classified predictions, both positive and negative, out of all predictions.\n\\[\n\\text{Accuracy} = \\frac{\\text{TP} + \\text{TN}}{\\text{TP} + \\text{TN} + \\text{FP} + \\text{FN}}\n\\]\nAccuracy is useful when the classes are balanced as a high accuracy means the model can effectively differentiate between outcomes; however, in imbalanced datasets, the model can achieve high accuracy by predicting the majority class all of the time.\n\n\nRecall\nRecall measures the proportion of actual positives that the model is able to identify.\n\\[\n\\text{Recall} = \\frac{\\text{TP}}{\\text{TP} + \\text{FN}}\n\\]\nRecall is vital when the cost of missing a true positive is high, such as in medicine where failing to identify a disease can have fatal consequences.\n\n\nPrecision\nPrecision measures the proportion of positive predictions that were actually correct.\n\\[\n\\text{Precision} = \\frac{\\text{TP}}{\\text{TP} + \\text{FP}}\n\\]\nPrecision is critical when the cost of a false positive is high, for example, in spam email classification where important emails may be misclassified as spam.\n\n\nF1-Score\nThe F1-Score is the harmonic mean of precision and recall which provides a metric that balances the tradeoff between them.\n\\[\n\\text{F1-Score} = 2 \\cdot \\frac{\\text{Precision} \\cdot \\text{Recall}}{\\text{Precision} + \\text{Recall}}\n\\]\nIt can be particularly useful when precision and recall both matter, i.e. when false positives and false negatives are equally important, such as in search engine results.\n\n\nROC Curve and AUC\nThe ROC (Receiver Operating Characteristic) curve plots the true positive rate (recall) against the false positive rate at different classification thresholds. The AUC (Area Under the Curve) quantifies the overall ability of the model to distinguish between classes. The true positive rate is all the proportion of true positives over all actual positives. The false positive rate is the proportion of false positives over all actual negatives.\n\\[\n\\text{TPR} = \\frac{\\text{TP}}{\\text{TP} + \\text{FN}}\n\\]\n\\[\n\\text{FPR} = \\frac{\\text{FP}}{\\text{TN} + \\text{FP}}\n\\]",
+    "crumbs": [
+      "Home",
+      "Logistic Regression",
+      "Logistic Regression"
+    ]
+  },
+  {
+    "objectID": "content/time_series/time_series.html",
+    "href": "content/time_series/time_series.html",
+    "title": "Time Series",
+    "section": "",
+    "text": "Time series decomposition involves breaking down a time series in three main components: trend, seasonality and residual. The trend (\\(T_t\\)) is the long term progression of the series. The seasonality (\\(S_t\\)) is the recurring patterns within the data. The residual (\\(R_t\\)) is the random, unexplained variation in the data.\n\\[\ny_t = T_t + S_t + R_t\n\\]\nFor example, in daily electricity usage data, the trend might reflect rising consumption over the years, the seasonality might be higher usage during winter, and the residuals would be the random, unexplained changes.",
+    "crumbs": [
+      "Home",
+      "Time Series",
+      "Time Series"
+    ]
+  },
+  {
+    "objectID": "content/time_series/time_series.html#time-series-decomposition",
+    "href": "content/time_series/time_series.html#time-series-decomposition",
+    "title": "Time Series",
+    "section": "",
+    "text": "Time series decomposition involves breaking down a time series in three main components: trend, seasonality and residual. The trend (\\(T_t\\)) is the long term progression of the series. The seasonality (\\(S_t\\)) is the recurring patterns within the data. The residual (\\(R_t\\)) is the random, unexplained variation in the data.\n\\[\ny_t = T_t + S_t + R_t\n\\]\nFor example, in daily electricity usage data, the trend might reflect rising consumption over the years, the seasonality might be higher usage during winter, and the residuals would be the random, unexplained changes.",
+    "crumbs": [
+      "Home",
+      "Time Series",
+      "Time Series"
+    ]
+  },
+  {
+    "objectID": "content/time_series/time_series.html#stationarity",
+    "href": "content/time_series/time_series.html#stationarity",
+    "title": "Time Series",
+    "section": "Stationarity",
+    "text": "Stationarity\nA time series is stationary when its behaviour remains constant over time which means that its statistical properties, like the mean and variance, don’t change over time. Stationarity is crucial because many time series models, like ARMA, assume a stationary input. Non stationary data can be things like cumulative revenue over time which will have a clear upward trend. Techniques like differencing are able to transform trending data to stationary data.\n\nDifferencing\nDifferencing removes trends to make a time series stationary by calculating the difference between consecutive observations.\n\\[\n\\Delta y_t = y_t - t_{t-1}\n\\]\nFor higher order differencing, the process is repeated, for example:\n\\[\n\\Delta ^2 y_t = \\Delta y_t - \\Delta Y_{t-1} = y_t - 2y_{t-1} + y_{t-2}\n\\]\nWe can also perform seasonal differencing to remove repeating patterns, such as weekly or yearly seasonality, by substracting the value from the same period in the previous cycle.\n\\[\n\\Delta y_t = y_t - y_{t-p} \\text{ where $p$ is the period of the seasonal behaviour.}\n\\]",
+    "crumbs": [
+      "Home",
+      "Time Series",
+      "Time Series"
+    ]
+  },
+  {
+    "objectID": "content/time_series/time_series.html#autoregression-and-moving-averages",
+    "href": "content/time_series/time_series.html#autoregression-and-moving-averages",
+    "title": "Time Series",
+    "section": "Autoregression and Moving Averages",
+    "text": "Autoregression and Moving Averages\n\nAutoregressive (AR) models\nAn AR model predicts the current value using past values. For example, an AR(2) model forecasts using the previous two lags.\n\\[\ny_t = \\phi_1 y_{t-1} + \\phi_2 y_{t-2} + \\epsilon_t\n\\]\n\n\nMoving Average (MA) models\nAn MA model predicts the current value using previous forecast errors.\n\\[\ny_t = \\mu + \\theta_1 \\epsilon_{t-1} + \\theta_2 \\epsilon_{t-2} + \\epsilon_t\n\\]\n\n\nAutoregressive Moving Average (ARMA) models\nARMA models combine AR and MA components to model stationary data. An ARMA(1,1) model contains one lag and one past error.\n\\[\ny_t = \\phi_1 y_{t-1} + \\theta_{t-1} \\epsilon_{t-1} + \\epsilon_t\n\\]\nThis allows the model to capture both lagged relationships and the impact of past errors. This could be useful in demand forecasting for example where the demand on a given day may depending on the previous day’s demand and unexpected supply chain issues.\n\n\nAIC and BIC for optimising model complexity\nAkaike Information Criterion (AIC) and Bayesian Information Criterion (BIC) are used to compare models by balancing goodness of fit with model complexity. They are defined as,\n\\[\n\\text{AIC} = 2k - 2 \\ln(L)\n\\]\n\\[\n\\text{BIC} = k\\ln(n) - 2 \\ln(L)\n\\]\nwhere \\(k\\) is the number of parameters in the model, \\(n\\) is the number of observations in the model and \\(L\\) is the likelihood of the model (i.e. the probability of observing the data, assuming the model is true).\n! How to calculate likelihood !\nADF and KPSS too!",
+    "crumbs": [
+      "Home",
+      "Time Series",
+      "Time Series"
+    ]
+  }
+]

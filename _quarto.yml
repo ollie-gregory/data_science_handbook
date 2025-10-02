@@ -1,0 +1,50 @@
+project:
+  type: website
+
+website:
+  title: "Data Science Handbook"
+  navbar:
+    left:
+      - href: index.qmd
+        text: Home
+  sidebar:
+    style: "floating"
+    contents:
+      - section: "Linear Regression"
+        contents:
+          - text: "Linear Regression"
+            href: ./content/linear_regression/linear_regression.qmd
+          - text: "LASSO and Ridge"
+            href: ./content/linear_regression/lasso_ridge.qmd
+          - text: "PCA"
+            href: ./content/linear_regression/PCA.qmd
+      - section: "Logistic Regression"
+        contents:
+          - text: "Logistic Regression"
+            href: ./content/logistic_regression/logistic_regression.qmd
+      - section: "Time Series"
+        contents:
+          - text: "Time Series"
+            href: ./content/time_series/time_series.qmd
+          - text: "SARIMAX and its components"
+            href: ./content/time_series/sarimax.qmd
+      - section: "Decision Trees"
+        contents:
+          - text: "Decision Trees"
+            href: ./content/decision_trees/decision_trees.qmd
+          - text: "Random Forests"
+            href: ./content/decision_trees/random_forests.qmd
+          - text: "Gradient Boosting"
+            href: ./content/decision_trees/gradient_boosting.qmd
+          - text: "Hyperparameter Tuning"
+            href: ./content/decision_trees/hyperparameter_tuning.qmd
+
+format:
+  html:
+    theme:
+      - cosmo
+      - brand
+    css: styles.css
+    toc: true
+
+jupyter: python3

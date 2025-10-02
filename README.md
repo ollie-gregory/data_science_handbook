@@ -1,0 +1,14 @@
+- Linear Regression
+    - LASSO and Ridge
+    - PCA
+- Logistic Regression
+- Time Series
+    - SARIMAX and its components
+- Decision Trees
+    - Random Forests
+    - Gradient Boosting
+    - Hyperparameter Tuning
+- Model Deployment
+    - Flask/FastAPI
+    - Streamlit/Gradio
+    
