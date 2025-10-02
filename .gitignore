@@ -1,2 +1,5 @@
 /.quarto/
 **/*.quarto_ipynb
+
+# Ignore Mac system files
+.DS_Store
