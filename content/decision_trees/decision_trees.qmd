@@ -135,4 +135,17 @@ A python and C++ implementation of the `DecisionTreeClassifer` can be found on m
 
 ## Decision Trees for Regression
 
+Decision trees can also be used for regression purposes although the algorithm is slightly different, for example, rather than comparing gini impurities at each potential split, we instead look to minimise the weighted average mean squared error of each of the nodes. 
+
 ### How does the decision tree regression algorithm work?
+
+The value of each node in a decision tree for regression is given by the average value of the target variable at that node, so if for example, a node had datapoints `[5, 6, 6, 7, 9, 9]`, the value at that node would be 7. The mean squared error of this node would be 2.33.
+
+$$
+\text{MSE} = \frac 1 n \sum_{i=1}^{n} (y_i - \hat{y}_i)^2
+$$
+
+Like with the classification algorithm, the regression algorithm searches through all possible feature splits at each node to find the split that has the lowest weighted average MSE of the two child nodes, where the MSEs of each node are weighted by the number of datapoints in that node. This process continues until either the stopping conditions are met, such as a maximum depth is reached, or the MSE of a node drops to 0.
+
+### In the code
+
