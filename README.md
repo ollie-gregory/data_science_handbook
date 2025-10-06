@@ -1,10 +1,17 @@
 To Do:
 - [ ] Home Page and Introduction
 - [ ] Linear Regression
+    - [ ] Linear Regression
     - [ ] LASSO and Ridge
     - [ ] PCA
 - [ ] Logistic Regression
+    - [x] Logistic Regression
+    - [x] Classification Metrics
+    - [ ] Multiclass Classification
+- [ ] k-Nearest Neighbors
+- [ ] SVMs
 - [ ] Time Series
+    - [ ] Time Series
     - [ ] SARIMAX and its components.
 - [ ] Decision Trees
     - [ ] Decision trees

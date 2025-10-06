@@ -23,6 +23,12 @@ website:
         contents:
           - text: "Logistic Regression"
             href: ./content/logistic_regression/logistic_regression.qmd
+          - text: "Classification Metrics"
+            href: ./content/logistic_regression/classification_metrics.qmd
+          - text: "Multiclass Classification"
+            href: ./content/logistic_regression/multiclass_classification.qmd
+      - section: "k-Nearest Neighbors"
+      - section: "Support Vector Machines"
       - section: "Time Series"
         contents:
           - text: "Time Series"
@@ -39,6 +45,16 @@ website:
             href: ./content/decision_trees/gradient_boosting.qmd
           - text: "Hyperparameter Tuning"
             href: ./content/decision_trees/hyperparameter_tuning.qmd
+      - section: "Neural Networks"
+        contents:
+          - text: "Neural Networks"
+            href: ./content/neural_networks/neural_networks.qmd
+          - text: "Convolutional Neural Networks"
+            href: ./content/neural_networks/CNNs.qmd
+          - text: "Recurrent Neural Networks"
+            href: ./content/neural_networks/RNNs.qmd
+          - text: "Graph Neural Networks"
+            href: ./content/neural_networks/GNNs.qmd
 
 format:
   html:

@@ -1,25 +1,51 @@
----
-title: Logistic Regression
-author: Oliver Gregory
-format:
-    html:
-        page-layout: full
-        highlight-style: github
-        format-links: false
-    pdf:
-        documentclass: article
-        papersize: a4
-        geometry: margin=2cm
-        highlight-style: github
-        code-block-border-left: true
-self-contained: true
----
+# Logistic Regression
+
+## What is logisitic regression?
+
+Logistic regression is like the linear regression of classification models. It is a simple and computationally efficient model that can perform well, but depends on a lot of strong assumptions such as a linear relationship between the model inputs and the log-odds. To understand how it works, it helps first to understand the difference between odds and probabilities along with how the sigmoid function relates the two.
 
 ## Odds and Log Odds 
 
-Odds and probabilities are related but not the same. The odds of an event, $Y$, are the ratio of the event happening to the event not happening. For example, if the odds of Edinburgh Rugby between the Glasgow Warriors are 5 to 3, then that means if it were to be played 8 times, Edinburgh would win 5 of those times and the odds would be $5/3 \approx 1.7$. Probability on the other hand, is the ratio of the event happening to everything, i.e., the number of games Edinburgh Rugby win, to the number of total games they play, which is $5/8 = 0.625$.
+Odds and probabilities are related but not the same. The odds of an event, $Y$, are the ratio of the event happening to the event not happening. For example, if the odds of Edinburgh Rugby beating the Glasgow Warriors are 5 to 3, then that means if it were to be played 8 times, Edinburgh would win 5 of those times and the odds would be $5/3 \approx 1.7$. Probability on the other hand, is the ratio of the event happening to everything, i.e., the number of games Edinburgh Rugby win, to the number of total games they play, which is $5/8 = 0.625$.
 
-Probabilities are always between 0 and 1, while odds are always within the range of 0 and infinity.
+Probabilities are always between 0 and 1, while odds are within the range of 0 and infinity.
+
+::: {.callout-note}
+
+The graph below shows how the probability and the odds change depending on the number of games won by Edinburgh out of 100. As the number of wins approaches 100, the probability approaches 1, but the odds increase exponentially towards infinity. We also see that the odds go from being bound between 0 and 1 while the probability is less than 50% and between 1 and infinity while the probability is greater 50%.
+
+```{python}
+#| echo: false
+#| warning: false
+#| message: false
+#| fig-align: center
+import numpy as np
+import matplotlib.pyplot as plt
+
+x = np.linspace(0, 100, 1000)
+
+odds = [x / (100 - x) for x in x]
+log_odds = [np.log(x) for x in odds]
+prob = [x / 100 for x in x]
+
+fig, ax = plt.subplots(figsize=(7.5, 4))
+
+ax.plot(x, odds, label='Odds', color='blue', linewidth=2)
+ax.plot(x, prob, label='Probability', color='red', linewidth=2)
+
+ax.set_xlabel('Games won', fontsize=12)
+ax.set_ylabel('Value', fontsize=12)
+ax.set_title('Odds vs Probability', fontsize=14, fontweight='bold')
+ax.legend()
+ax.grid(True, alpha=0.3)
+
+ax.set_ylim(0, 5)
+
+plt.tight_layout()
+plt.show()
+```
+
+:::
 
 ### Calculating the odds from probabilities
 
@@ -41,13 +67,61 @@ $$
 
 ### Log Odds
 
-When the odds are against an event happening, i.e., it is less likely to happen than not happen, the odds will be between 0 and 1. Conversely, when the odds are in favour of an event happening, the odds will be between 1 and infinity. If the odds of an event are against 1 to 6, then the odds are approximately 1.7. But if the odds are in favour 6 to 1, then the odds are 6. The magnitude of the odds against look much smaller than the odds in favour, but taking the log of these odds makes it all symmetrical.
+When the odds are against an event happening, i.e., it is less likely to happen than not happen, the odds will be between 0 and 1. Conversely, when the odds are in favour of an event happening, the odds will be between 1 and infinity. For example, if the odds of an event are against 1 to 6, then the odds are approximately 1.7. But if the odds are in favour 6 to 1, then the odds are 6. The magnitude of the odds against look much smaller than the odds in favour, but taking the log of these creates symmetry around zero. This symmetry is crucial for logistic regression because it allows us to model the relationship between features and outcomes using a linear equation, even though probabilities themselves are bounded between 0 and 1.
 
 $$
 \log(1/6) = - \log(6) = -1.79
 $$
 
-The log function makes the absolute distance from 0 to the odds the same whether it is against or in favour. Log Odds are normally distributed.
+The log function makes the absolute distance from 0 to the odds the same whether it is against or in favour. The graph below shows how 4 to 1 odds in favour (80 to 20) compare to 4 to 1 odds against (20 to 80) when viewed from the perspective of odds and log odds. 
+
+```{python}
+#| echo: False
+#| fig-align: center
+#| message: False
+#| warning: False
+
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.5, 3))
+
+# Plot odds
+ax1.plot(x, odds, 'r-', linewidth=2)
+ax1.set_ylabel('Odds')
+ax1.set_xlabel('Games Won')
+ax1.grid(True, alpha=0.3)
+ax1.set_ylim(0,20)
+
+# Add points and dashed lines for odds plot
+idx_20 = np.argmin(np.abs(x - 20))
+idx_80 = np.argmin(np.abs(x - 80))
+
+ax1.plot(x[idx_20], odds[idx_20], marker='o', markersize=4, color='black')
+ax1.plot(x[idx_80], odds[idx_80], marker='o', markersize=4, color='black')
+ax1.vlines(x[idx_20], 0, odds[idx_20], colors='black', linestyles='dashed')
+ax1.vlines(x[idx_80], 0, odds[idx_80], colors='black', linestyles='dashed')
+ax1.set_xlim(0,100)
+
+# Plot log odds
+ax2.plot(x, log_odds, 'r-', linewidth=2)
+ax2.set_ylabel('$\log(Odds)$')
+ax2.set_xlabel('Games Won')
+ax2.grid(True, alpha=0.3)
+
+# Add points and dashed lines for log odds plot
+ax2.plot(x[idx_20], log_odds[idx_20], marker='o', markersize=4, color='black')
+ax2.plot(x[idx_80], log_odds[idx_80], marker='o', markersize=4, color='black')
+ax2.vlines(x[idx_20], 0, log_odds[idx_20], colors='black', linestyles='dashed')
+ax2.vlines(x[idx_80], 0, log_odds[idx_80], colors='black', linestyles='dashed')
+ax2.hlines(0, 0, 100, color='black', linewidth=1, alpha=0.7)
+ax2.set_xlim(0,100)
+
+# Adjust layout to prevent overlap
+plt.tight_layout()
+
+# Show the plot
+plt.show()
+```
+
+In logistic regression, we assume the log odds are normally distributed, which is one reason why this transformation is so useful for statistical modelling.
 
 ## Logistic Function (or Sigmoid Function)
 
@@ -78,14 +152,9 @@ This means that the logistic function backs out the probability of an event happ
 
 ```{python}
 #| echo: false
-#| fig-width: 12
-#| fig-height: 5
 #| fig-align: center
 
-import numpy as np
-import matplotlib.pyplot as plt
-
-fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(10, 4))
+fig, (ax1, ax2) = plt.subplots(1, 2, figsize=(7.5, 3))
 
 # Plot 1: Log Odds
 # Log odds = ln(p / (1 - p))
@@ -93,9 +162,9 @@ p = np.linspace(0.01, 0.99, 1000)
 log_odds = np.log(p / (1 - p))
 
 ax1.plot(p, log_odds, 'r-', linewidth=2)
-ax1.set_xlabel('Probability (p)', fontsize=12)
-ax1.set_ylabel('Log Odds = ln(p / (1-p))', fontsize=12)
-ax1.set_title('Log Odds Function', fontsize=14, fontweight='bold')
+ax1.set_xlabel('Probability (p)')
+ax1.set_ylabel('$\\text{Log Odds} = \\log\\left(\\frac{p}{1-p}\\right)$')
+ax1.set_title('Log Odds Function')
 ax1.grid(True, alpha=0.3)
 
 # Plot 2: Sigmoid Function
@@ -104,9 +173,9 @@ x = np.linspace(-6, 6, 1000)
 sigmoid = 1 / (1 + np.exp(-x))
 
 ax2.plot(x, sigmoid, 'r-', linewidth=2)
-ax2.set_xlabel('x (log odds)', fontsize=12)
-ax2.set_ylabel('Sigmoid = 1 / (1 + e^(-x))', fontsize=12)
-ax2.set_title('Sigmoid Function', fontsize=14, fontweight='bold')
+ax2.set_xlabel('x (log odds)')
+ax2.set_ylabel('$\\sigma (z) = \\frac{1}{1 + e^{-x}}$')
+ax2.set_title('Sigmoid Function')
 ax2.grid(True, alpha=0.3)
 
 # Adjust layout to prevent overlap
@@ -153,28 +222,11 @@ $$
 
 In general, there is no analytical solution to this minimisation, so numerical methods, like gradient descent, must be used to find the optimal parmeters of the model.
 
-### Interpreting Coefficients
+### Making predictions and interpreting coefficients
+
+To make predictions using logistic regression, a threshold probability is chosen where predictions above that threshold are sorted into a different class to those below. Typically, the default threshold would be 0.5, however, this does not have to be the case. 
 
 Without scaling, a one unit increase in a variable $x_i$ leads to a $\beta_i$ units increase in $z$, also known as the log odds. For example, a coefficient of 0.5 corresponds to an increase in the log odds of 0.5. However, this is not easily interpretable. Instead, if we take the exponential, then we see that a coefficient of 0.5 corresponds to an increase in the _odds_ of an event happening by $\exp(0.5) \approx 1.65$ meaning a one unit increase in the feature, leads to an increase in the odds of the positive class by 65%.
-
-## In code
-
-We can use the `sklearn.linear_model` package to build logistic regression models using python.
-
-```{python}
-#| eval: false
-
-from sklearn.linear_model import LogisticRegression
-from sklearn.model_selection import train_test_split
-
-X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
-
-model = LogisticRegression()
-model.fit(X_train, y_train)
-
-y_proba = model.predict_proba(X_test)
-y_pred = (y_proba[:, 1] >= 0.5).astype(int)
-```
 
 ## Assumptions of logistic regression
 
@@ -183,58 +235,44 @@ y_pred = (y_proba[:, 1] >= 0.5).astype(int)
 3. No multicollinearity: The independent variables are not highly correlated with each other.
 4. Sufficient sample size: Logistic regression requires a sufficiently sized and balanced dataset. A rule of thumb is 10-20 observations per feature.
 
-## Metrics for logistic regression
+## In code
 
-### Accuracy
+We can use the `sklearn.linear_model` package to build logistic regression models using python. Let's test it on the [loan application data set from Kaggle](https://www.kaggle.com/datasets/bhavikjikadara/loan-status-prediction).
 
-Accuracy measures the proportion of correctly classified predictions, both positive and negative, out of all predictions.
+```{python}
+#| warning: False
+#| message: False
+import pandas as pd
+from sklearn.linear_model import LogisticRegression
+from sklearn.model_selection import train_test_split
+from sklearn.metrics import accuracy_score
 
-$$
-\text{Accuracy} = \frac{\text{TP} + \text{TN}}{\text{TP} + \text{TN} + \text{FP} + \text{FN}}
-$$
+data = pd.read_csv("./loan_data.csv")
 
-Accuracy is useful when the classes are **balanced** as a high accuracy means the model can effectively differentiate between outcomes; however, in imbalanced datasets, the model can achieve high accuracy by predicting the majority class all of the time.
+data.drop(columns=['Loan_ID'], inplace=True)
+data = data.dropna()
 
-### Recall
+# replace '3+' with '3' in dependents column
+data['Dependents'] = data['Dependents'].replace('3+', '3')
+data['Dependents'] = data['Dependents'].astype(int)
 
-Recall measures the proportion of actual positives that the model is able to identify.
+X = data.drop(columns=['Loan_Status'])
+y = data['Loan_Status']
 
-$$
-\text{Recall} = \frac{\text{TP}}{\text{TP} + \text{FN}}
-$$
+X = pd.get_dummies(X, drop_first=True)
 
-Recall is vital when the cost of missing a true positive is high, such as in medicine where failing to identify a disease can have fatal consequences.
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
 
-### Precision
+model = LogisticRegression(class_weight="balanced")
+model.fit(X_train, y_train)
 
-Precision measures the proportion of positive predictions that were actually correct.
+# Get probabilities:
+y_proba = model.predict_proba(X_test)
 
-$$
-\text{Precision} = \frac{\text{TP}}{\text{TP} + \text{FP}}
-$$
+# Get predictions:
+y_pred = model.predict(X_test)
 
-Precision is critical when the cost of a false positive is high, for example, in spam email classification where important emails may be misclassified as spam.
+print(f"Logistic Regression Accuracy: {accuracy_score(y_pred, y_test)}")
+```
 
-### F1-Score
-
-The F1-Score is the harmonic mean of precision and recall which provides a metric that balances the tradeoff between them.
-
-$$
-\text{F1-Score} = 2 \cdot \frac{\text{Precision} \cdot \text{Recall}}{\text{Precision} + \text{Recall}}
-$$
-
-It can be particularly useful when precision and recall both matter, i.e. when false positives and false negatives are equally important, such as in search engine results.
-
-### ROC Curve and AUC
-
-The ROC (Receiver Operating Characteristic) curve plots the true positive rate (recall) against the false positive rate at different classification thresholds. The AUC (Area Under the Curve) quantifies the overall ability of the model to distinguish between classes. The true positive rate is all the proportion of true positives over all actual positives. The false positive rate is the proportion of false positives over all actual negatives.
-
-$$
-\text{TPR} = \frac{\text{TP}}{\text{TP} + \text{FN}}
-$$
-
-$$
-\text{FPR} = \frac{\text{FP}}{\text{TN} + \text{FP}}
-$$
-
-### Discuss class imbalance
+Here we can see that our logistic regression model is able to correctly predict the outcome of a loan application 75% of the time. This dataset is covered in more depth in the [section on decision trees](../decision_trees/decision_trees.qmd).

@@ -237,17 +237,37 @@ window.Quarto = {
  <span class="menu-text">Logistic Regression</span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/logistic_regression/classification_metrics.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Classification Metrics</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/logistic_regression/multiclass_classification.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Multiclass Classification</span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">k-Nearest Neighbors</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <span class="sidebar-item-text sidebar-link text-start">
+ <span class="menu-text">Support Vector Machines</span></span>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true">
  <span class="menu-text">Time Series</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-5" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-5" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/time_series/time_series.html" class="sidebar-item-text sidebar-link">
@@ -264,13 +284,13 @@ window.Quarto = {
   </li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
-            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true">
  <span class="menu-text">Decision Trees</span></a>
-          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-6" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
-      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+      <ul id="quarto-sidebar-section-6" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="../../content/decision_trees/decision_trees.html" class="sidebar-item-text sidebar-link active">
@@ -297,6 +317,41 @@ window.Quarto = {
 </li>
       </ul>
   </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true">
+ <span class="menu-text">Neural Networks</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-7" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-7" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/neural_networks/neural_networks.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/neural_networks/CNNs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Convolutional Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/neural_networks/RNNs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Recurrent Neural Networks</span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="../../content/neural_networks/GNNs.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Graph Neural Networks</span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -307,13 +362,17 @@ window.Quarto = {
     <h2 id="toc-title">On this page</h2>
    
   <ul>
-  <li><a href="#what-is-a-decision-tree" id="toc-what-is-a-decision-tree" class="nav-link active" data-scroll-target="#what-is-a-decision-tree">What is a decision tree?</a></li>
+  <li><a href="#decision-trees-for-classification" id="toc-decision-trees-for-classification" class="nav-link active" data-scroll-target="#decision-trees-for-classification">Decision Trees for Classification</a>
+  <ul class="collapse">
+  <li><a href="#what-is-a-decision-tree" id="toc-what-is-a-decision-tree" class="nav-link" data-scroll-target="#what-is-a-decision-tree">What is a decision tree?</a></li>
   <li><a href="#how-does-the-decision-tree-algorithm-work" id="toc-how-does-the-decision-tree-algorithm-work" class="nav-link" data-scroll-target="#how-does-the-decision-tree-algorithm-work">How does the decision tree algorithm work?</a></li>
   <li><a href="#in-the-code" id="toc-in-the-code" class="nav-link" data-scroll-target="#in-the-code">In the code</a></li>
+  </ul></li>
   <li><a href="#decision-trees-for-regression" id="toc-decision-trees-for-regression" class="nav-link" data-scroll-target="#decision-trees-for-regression">Decision Trees for Regression</a>
   <ul class="collapse">
   <li><a href="#how-does-the-decision-tree-regression-algorithm-work" id="toc-how-does-the-decision-tree-regression-algorithm-work" class="nav-link" data-scroll-target="#how-does-the-decision-tree-regression-algorithm-work">How does the decision tree regression algorithm work?</a></li>
   <li><a href="#in-the-code-1" id="toc-in-the-code-1" class="nav-link" data-scroll-target="#in-the-code-1">In the code</a></li>
+  <li><a href="#decision-tree-optimisations" id="toc-decision-tree-optimisations" class="nav-link" data-scroll-target="#decision-tree-optimisations">Decision Tree Optimisations</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -323,7 +382,7 @@ window.Quarto = {
 
 <header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="../../content/decision_trees/decision_trees.html">Decision Trees</a></li><li class="breadcrumb-item"><a href="../../content/decision_trees/decision_trees.html">Decision Trees</a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Decision Trees for Classification</h1>
+<h1 class="title">Decision Trees</h1>
 </div>
 
 
@@ -340,6 +399,8 @@ window.Quarto = {
 </header>
 
 
+<section id="decision-trees-for-classification" class="level2">
+<h2 class="anchored" data-anchor-id="decision-trees-for-classification">Decision Trees for Classification</h2>
 <section id="what-is-a-decision-tree" class="level3">
 <h3 class="anchored" data-anchor-id="what-is-a-decision-tree">What is a decision tree?</h3>
 <p>Imagine you want to determine whether or not you are in Scotland, based on thing happening in your environment. Perhaps you start by asking if it is raining? If the answer is yes, it is probably very likely that you are in Scotland, but just to be sure that you aren’t in India during the monsoon season, you also check if it is cold. If the answer is also yes, then you determine you are in Scotland. Perhaps instead, it is not raining, but you can definitely hear bagpipes in the distance, then that’s also a tell tale sign you are in Scotland.</p>
@@ -365,10 +426,10 @@ window.Quarto = {
 </div>
 </div>
 <p>Decision trees work in essentially the same way. You start with some data, let’s say the <a href="https://www.kaggle.com/datasets/bhavikjikadara/loan-status-prediction">loan application data set from Kaggle</a>.</p>
-<div id="45873de0" class="cell" data-message="false" data-execution_count="1">
+<div id="53f1d949" class="cell" data-message="false" data-execution_count="1">
 <div class="cell-output cell-output-display">
 <!--| quarto-html-table-processing: none -->
-<table id="itables_0aa65208_404f_41d5_88b0_9bbfd88aefa3"><tbody><tr>
+<table id="itables_d5686c4d_a861_4e60_b995_28a072501120"><tbody><tr>
     <td style="vertical-align:middle; text-align:left">
     <a href="https://mwouts.github.io/itables/"><svg class="main-svg" xmlns="http://www.w3.org/2000/svg" xlink="http://www.w3.org/1999/xlink" width="64" viewbox="0 0 500 400" style="font-family: 'Droid Sans', sans-serif;">
     <g style="fill:#d9d7fc">
@@ -434,11 +495,11 @@ window.Quarto = {
 <script type="module">
     import { ITable, jQuery as $ } from 'https://www.unpkg.com/dt_for_itables@2.4.0/dt_bundle.js';
 
-    document.querySelectorAll("#itables_0aa65208_404f_41d5_88b0_9bbfd88aefa3:not(.dataTable)").forEach(table => {
+    document.querySelectorAll("#itables_d5686c4d_a861_4e60_b995_28a072501120:not(.dataTable)").forEach(table => {
         if (!(table instanceof HTMLTableElement))
             return;
 
-        let dt_args = {"searching": false, "ordering": false, "layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "classes": ["display", "nowrap"], "order": [], "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "text_in_header_can_be_selected": true, "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Loan_ID</th>\n      <th>Gender</th>\n      <th>Married</th>\n      <th>Dependents</th>\n      <th>Education</th>\n      <th>Self_Employed</th>\n      <th>ApplicantIncome</th>\n      <th>CoapplicantIncome</th>\n      <th>LoanAmount</th>\n      <th>Loan_Amount_Term</th>\n      <th>Credit_History</th>\n      <th>Property_Area</th>\n      <th>Loan_Status</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"LP001003\", \"Male\", \"Yes\", \"1\", \"Graduate\", \"No\", 4583, 1508.0, 128.0, 360.0, 1.0, \"Rural\", \"N\"], [\"LP001005\", \"Male\", \"Yes\", \"0\", \"Graduate\", \"Yes\", 3000, 0.0, 66.0, 360.0, 1.0, \"Urban\", \"Y\"], [\"LP001006\", \"Male\", \"Yes\", \"0\", \"Not Graduate\", \"No\", 2583, 2358.0, 120.0, 360.0, 1.0, \"Urban\", \"Y\"], [\"LP001008\", \"Male\", \"No\", \"0\", \"Graduate\", \"No\", 6000, 0.0, 141.0, 360.0, 1.0, \"Urban\", \"Y\"], [\"LP001013\", \"Male\", \"Yes\", \"0\", \"Not Graduate\", \"No\", 2333, 1516.0, 95.0, 360.0, 1.0, \"Urban\", \"Y\"]]"};
+        let dt_args = {"searching": false, "ordering": false, "layout": {"topStart": null, "topEnd": null, "bottomStart": null, "bottomEnd": null}, "text_in_header_can_be_selected": true, "classes": ["display", "nowrap"], "style": {"table-layout": "auto", "width": "auto", "margin": "auto", "caption-side": "bottom"}, "order": [], "table_html": "<table><thead>\n    <tr style=\"text-align: right;\">\n      \n      <th>Loan_ID</th>\n      <th>Gender</th>\n      <th>Married</th>\n      <th>Dependents</th>\n      <th>Education</th>\n      <th>Self_Employed</th>\n      <th>ApplicantIncome</th>\n      <th>CoapplicantIncome</th>\n      <th>LoanAmount</th>\n      <th>Loan_Amount_Term</th>\n      <th>Credit_History</th>\n      <th>Property_Area</th>\n      <th>Loan_Status</th>\n    </tr>\n  </thead></table>", "data_json": "[[\"LP001003\", \"Male\", \"Yes\", \"1\", \"Graduate\", \"No\", 4583, 1508.0, 128.0, 360.0, 1.0, \"Rural\", \"N\"], [\"LP001005\", \"Male\", \"Yes\", \"0\", \"Graduate\", \"Yes\", 3000, 0.0, 66.0, 360.0, 1.0, \"Urban\", \"Y\"], [\"LP001006\", \"Male\", \"Yes\", \"0\", \"Not Graduate\", \"No\", 2583, 2358.0, 120.0, 360.0, 1.0, \"Urban\", \"Y\"], [\"LP001008\", \"Male\", \"No\", \"0\", \"Graduate\", \"No\", 6000, 0.0, 141.0, 360.0, 1.0, \"Urban\", \"Y\"], [\"LP001013\", \"Male\", \"Yes\", \"0\", \"Not Graduate\", \"No\", 2333, 1516.0, 95.0, 360.0, 1.0, \"Urban\", \"Y\"]]"};
         new ITable(table, dt_args);
     });
 </script>
@@ -453,7 +514,7 @@ window.Quarto = {
 \text{Gini Impurity} = 1 - \sum p_i^2
 \]</span></p>
 <p>An example function in python for calculating this would be,</p>
-<div id="9ccf9d4c" class="cell" data-execution_count="2">
+<div id="39b70a38" class="cell" data-execution_count="2">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="kw">def</span> calc_gini_impurity(<span class="va">self</span>, y):</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>    <span class="cf">if</span> <span class="bu">len</span>(y) <span class="op">==</span> <span class="dv">0</span>:</span>
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>        <span class="cf">return</span> <span class="dv">0</span></span>
@@ -474,7 +535,7 @@ window.Quarto = {
 <section id="in-the-code" class="level3">
 <h3 class="anchored" data-anchor-id="in-the-code">In the code</h3>
 <p>We can examine how we would train a decision tree on our loan data using Scikit-Learn.</p>
-<div id="922cede7" class="cell" data-execution_count="3">
+<div id="d143f602" class="cell" data-execution_count="3">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> pandas <span class="im">as</span> pd</span>
 <span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> matplotlib.pyplot <span class="im">as</span> plt</span>
 <span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeClassifier</span>
@@ -514,17 +575,17 @@ window.Quarto = {
 </div>
 <p>Here we can see the final decision tree for this data. We have set <code>max_depth = 3</code> so that the tree fits on the page and is easily interpretable, but this (obviously) reduces the quality of its predictions.</p>
 <p>We can see that the root node splits the data on whether the applicant’s <code>Credit_History</code> is less than or equal to 0.5. <code>Credit_History</code> is a binary variable that takes 1 if an applicant’s credit history meets the guidelines and 0 otherwise. This means that the root node is therefore splitting on whether or not that applicant has passed a credit check. If they don’t meet the requirements, the tree then asks if the co-applicant’s income is less than or equal to 2360. If no, then the tree reaches a pure leaf node where all training instances are classified as “N” for <code>Loan_Status</code>. We can see that from the <code>value = [29, 0]</code> which means that at that node, there are 29 values with label “N” and 0 values with label “Y”. <code>Class = y[0]</code> means the majority class at this node is <code>y[0]</code> which in this case, means “N”.</p>
-<div id="4cfd0096" class="cell" data-execution_count="4">
+<div id="d933c39a" class="cell" data-execution_count="4">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> accuracy_score</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> tree.predict(X_test)</span>
 <span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"Model Accuracy: </span><span class="sc">{</span>accuracy_score(y_test, y_pred)<span class="op">*</span> <span class="dv">100</span><span class="sc">:.2f}</span><span class="ss">%"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>Model Accuracy: 79.03%</code></pre>
+<pre><code>Model Accuracy: 77.42%</code></pre>
 </div>
 </div>
 <p>Due to the unbalanced nature of the dataset, just guessing “Y” every time would get an accuracy of 71.95% so this decision does have better performance than that baseline. Using the argument <code>class_weight="balanced"</code> and not restricting the tree depth gives us a better, and more interpretable model accuracy compared to just random guessing which with balanced classes would have an accuracy of 50%.</p>
-<div id="8447395b" class="cell" data-execution_count="5">
+<div id="bd7440ba" class="cell" data-execution_count="5">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>tree_balanced <span class="op">=</span> DecisionTreeClassifier(class_weight<span class="op">=</span><span class="st">"balanced"</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tree_balanced.fit(X_train, y_train)</span>
 <span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>y_pred_balanced <span class="op">=</span> tree_balanced.predict(X_test)</span>
@@ -536,6 +597,7 @@ window.Quarto = {
 </div>
 <p>For more information on class imbalance, please refer to the chapter on logistic regression.</p>
 <p>A python and C++ implementation of the <code>DecisionTreeClassifer</code> can be found on my github <a href="https://github.com/ollie-gregory/decision_tree_from_scratch">here</a>.</p>
+</section>
 </section>
 <section id="decision-trees-for-regression" class="level2">
 <h2 class="anchored" data-anchor-id="decision-trees-for-regression">Decision Trees for Regression</h2>
@@ -551,7 +613,7 @@ window.Quarto = {
 <section id="in-the-code-1" class="level3">
 <h3 class="anchored" data-anchor-id="in-the-code-1">In the code</h3>
 <p>Let’s now train an example model for predicting the age of a possum from various features such as height and gender from the Kaggle <a href="https://www.kaggle.com/datasets/abrambeyer/openintro-possum/data">possum dataset</a>.</p>
-<div id="9fc701dd" class="cell" data-execution_count="6">
+<div id="85e1da29" class="cell" data-execution_count="6">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.tree <span class="im">import</span> DecisionTreeRegressor</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="im">from</span> sklearn.metrics <span class="im">import</span> mean_squared_error</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="im">import</span> numpy <span class="im">as</span> np</span>
@@ -583,23 +645,32 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<div id="ec7c634b" class="cell" data-execution_count="7">
+<div id="f050546d" class="cell" data-execution_count="7">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y_pred <span class="op">=</span> tree.predict(X_test)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(<span class="ss">f"RMSE: </span><span class="sc">{</span>np<span class="sc">.</span>sqrt(mean_squared_error(y_pred, y_test))<span class="sc">}</span><span class="ss">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>RMSE: 2.516611478423583</code></pre>
+<pre><code>RMSE: 2.2782616597915593</code></pre>
 </div>
 </div>
 <p>This RMSE shows us predicting possum age with a RMSE of around 2.81 years, which, given the fact that the largest age in the dataset is 9, isn’t fantastic, but the point was to demonstrate how we would train a simple decision tree regressor.</p>
-<div id="2c6b44cd" class="cell" data-execution_count="8">
+<div id="1ccc26d2" class="cell" data-execution_count="8">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode python code-with-copy"><code class="sourceCode python"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="bu">print</span>(data[<span class="st">'age'</span>].<span class="bu">max</span>())</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>9.0</code></pre>
 </div>
 </div>
+</section>
+<section id="decision-tree-optimisations" class="level3">
+<h3 class="anchored" data-anchor-id="decision-tree-optimisations">Decision Tree Optimisations</h3>
+<section id="pre-pruning" class="level4">
+<h4 class="anchored" data-anchor-id="pre-pruning">Pre-pruning</h4>
+</section>
+<section id="post-pruning" class="level4">
+<h4 class="anchored" data-anchor-id="post-pruning">Post-pruning</h4>
 
 
+</section>
 </section>
 </section>
 

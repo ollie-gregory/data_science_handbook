@@ -1,3 +1,5 @@
+# Decision Trees
+
 ## Decision Trees for Classification
 
 ### What is a decision tree?
