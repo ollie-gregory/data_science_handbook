@@ -1,14 +1,29 @@
-- Linear Regression
-    - LASSO and Ridge
-    - PCA
-- Logistic Regression
-- Time Series
-    - SARIMAX and its components
-- Decision Trees
-    - Random Forests
-    - Gradient Boosting
-    - Hyperparameter Tuning
-- Model Deployment
-    - Flask/FastAPI
-    - Streamlit/Gradio
+To Do:
+- [ ] Home Page and Introduction
+- [ ] Linear Regression
+    - [ ] LASSO and Ridge
+    - [ ] PCA
+- [ ] Logistic Regression
+- [ ] Time Series
+    - [ ] SARIMAX and its components.
+- [ ] Decision Trees
+    - [ ] Decision trees
+        - [x] Regression Trees
+        - [x] Classification Trees
+        - [ ] Pruning
+    - [ ] Random Forests
+    - [ ] Gradient Boosting
+    - [ ] Hyperparameter Tuning
+- [ ] Neural Networks
+    - [ ] CNNs
+    - [ ] RNNs
+    - [ ] GNNs
+- [ ] Model Deployment
+    - [ ] Flask/FastAPI
+    - [ ] Streamlit/Gradio
+- [ ] End-to-End Project
+    - [ ] Data Collection
+    - [ ] EDA
+    - [ ] Modelling
+    - [ ] Deployment
     

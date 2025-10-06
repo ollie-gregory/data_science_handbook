@@ -182,3 +182,15 @@ y_pred = tree.predict(X_test)
 
 print(f"RMSE: {np.sqrt(mean_squared_error(y_pred, y_test))}")
 ```
+
+This RMSE shows us predicting possum age with a RMSE of around 2.81 years, which, given the fact that the largest age in the dataset is 9, isn't fantastic, but the point was to demonstrate how we would train a simple decision tree regressor.
+
+```{python}
+print(data['age'].max())
+```
+
+### Decision Tree Optimisations
+
+#### Pre-pruning
+
+#### Post-pruning
